@@ -36,10 +36,11 @@ app.post('/users', (req, res) => {
     const newUser = {
         firstname, lastname, email, password: hash
     }
-
+    data.users.push(newUser);
     res.json(req.body)
 
 })
+
 
 // Display a single post
 app.get('/posts/:id',(req,res)=>{
