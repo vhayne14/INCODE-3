@@ -13,9 +13,16 @@
 
             <%- include('../partials/header') %>
 
-        
-                <p><%= `JSON.stringify(${getSched})` %></p>
             
+            <% for (let i = 0; i < getSched.length; i++) { %>
+                <p>
+                    <strong>User ID: </strong><%= getSched[i].user_id %><br>
+                    <strong>Day: </strong><%= getSched[i].day %><br>
+                    <strong>Start: </strong><%= getSched[i].start_at %><br>
+                    <strong>End: </strong><%= getSched[i].end_at %><br>
+                </p>
+            
+            <% } %>
 
         </main>
         <!-- missing footer-->
