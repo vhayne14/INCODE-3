@@ -13,20 +13,8 @@
 
             <%- include('../partials/header') %>
 
-            <% users.forEach(user => { %>
-                <p>
-                    <strong>
-                        <%= `${user.firstname} ${user.lastname}` %>
-                    </strong><br>
-
-                    <%= `${user.email}` %><br>
-                        <%= `${user.password}` %>
-
-
-                </p>
-                <% }) %>
-            
-
+        
+                <p><%= `JSON.stringify(${getSched})` %></p>
             
 
         </main>

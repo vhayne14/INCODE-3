@@ -34,6 +34,20 @@ app.get('/users',(req, res) =>{
 })
 
 
+// GET a single user and schedule
+app.get('/users/:id/schedules',(req,res)=>{
+
+
+    const getSched = data.schedules.filter(sched => sched.user_id===Number(req.params.id));
+
+    res.render("pages/schedules.ejs", {
+        getSched: getSched
+    })
+
+})
+
+
+
 
 
 app.listen(PORT, () => {
