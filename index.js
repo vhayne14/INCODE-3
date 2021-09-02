@@ -3,6 +3,7 @@ const data = require('./data')
 const app = express()
 const PORT = process.env.PORT || 3000
 const bcrypt = require('bcryptjs');
+const { render } = require('ejs');
 const msg = "Hello World Branch 3b"
 // console.log(data.users)
 
@@ -34,6 +35,9 @@ app.get('/users',(req, res) =>{
     
 })
 
+
+
+
 // GET all schedules
 app.get('/schedules',(req,res)=>{
    
@@ -64,11 +68,7 @@ app.post('/users/new', (req, res) => {
     // res.json(newUser)
     res.redirect("/users");
    
-
-
-
-
-  })
+})
 
 
 
@@ -113,6 +113,33 @@ app.get('/users/:id/schedules',(req,res)=>{
 
 })
 
+
+// GET ROUTE for new schedule
+app.get('/schedules/new',(req,res)=>{
+
+    res.render('pages/newSched')
+
+    
+})
+
+
+// POST for new schedule
+app.post('/schedules/new',(req,res)=>{
+
+
+    const {user_id, day, start_at, end_at} = req.body 
+   
+
+    const newSched = {
+        user_id, day, start_at, end_at
+    }
+    data.schedules.push(newSched);
+    // res.json(newSched);
+
+
+
+    res.redirect('/schedules');
+})
 
 
 app.listen(PORT, () => {
