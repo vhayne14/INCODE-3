@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <main>
+        <h1 style="color: red">List of Schedules!</h1>
+
+        <%- include('../partials/header') %>
+
+       
+            <% schedules.forEach(sched => { %>
+                <p>
+               <strong>UserID</strong>
+                    <%= sched.user_id %> <br>
+                <strong>Day: </strong>
+                    <%= sched.day %> <br>
+                <strong>Start: </strong>
+                    <%= sched.start_at %> <br>
+                <strong>End: </strong>
+                    <%= sched.end_at %> <br>
+                </p>
+
+                
+            <% }) %>
+
+
+
+    </main>
+
+</body>
+</html>

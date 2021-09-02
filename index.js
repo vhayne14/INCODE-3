@@ -33,12 +33,49 @@ app.get('/users',(req, res) =>{
     
 })
 
+// GET all schedules
+app.get('/schedules',(req,res)=>{
+   
+    res.render("pages/allSched", {
+        schedules: data.schedules
+    })
+
+})
+
+// GET a single user
+app.get('/users/:id',(req,res) => {
+
+
+
+     const checkUser = data.users.some((user, index) => index === Number(req.params.id));
+
+     if (checkUser) {
+         const getUser = data.users.filter((user, index) => index === Number(req.params.id));
+         res.render("pages/aboutUser.ejs", {
+            getUser: getUser
+        })
+      
+     } else {
+        const getUser = "No such user";
+        res.render("pages/invalidUser.ejs", {
+            getUser: getUser
+        })
+
+     }
+    
+
+    // console.log(checkUser);
+ 
+
+
+})
 
 // GET a single user and schedule
 app.get('/users/:id/schedules',(req,res)=>{
 
 
-    const getSched = data.schedules.filter(sched => sched.user_id===Number(req.params.id));
+    const getSched = data.schedules.filter(sched => sched.id===Number(req.params.id));
+    
 
     res.render("pages/schedules.ejs", {
         getSched: getSched
@@ -46,7 +83,7 @@ app.get('/users/:id/schedules',(req,res)=>{
 
 })
 
-
+//
 
 
 
