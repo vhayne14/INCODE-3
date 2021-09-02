@@ -84,23 +84,38 @@ app.post('/users', (req, res) => {
 })
 
 
-// Display a single post
-app.get('/posts/:id',(req,res)=>{
-    const found = data.posts.some(post => post.id === Number(req.params.id))
+// Add new schedule
+app.post('/schedules', (req, res) => {
+    const {firstname, lastname, email, password} = req.body 
+    console.log(hash);
 
-    if (found) {
-        //res.send(data.posts.filter(post => post.id === Number(req.params.id)))
-        const post = data.posts.filter(post => post.id === Number(req.params.id))
-        res.send(post[0])
-    } else {
-        res.send('Post not found')
+    const newSched = {
+        user_id, day, start_at, end_at
     }
-
-    // console.log(found);
-    // res.end()
-    // data.posts[req.params.id]
-    // res.send(req.params.id)
+    data.users.push(newSched);
+    res.json(newSched);
+    // res.json(req.body);
+    // res.json(data.users);
 })
+
+
+// Display a single post
+// app.get('/posts/:id',(req,res)=>{
+//     const found = data.posts.some(post => post.id === Number(req.params.id))
+
+//     if (found) {
+//         //res.send(data.posts.filter(post => post.id === Number(req.params.id)))
+//         const post = data.posts.filter(post => post.id === Number(req.params.id))
+//         res.send(post[0])
+//     } else {
+//         res.send('Post not found')
+//     }
+
+//     // console.log(found);
+//     // res.end()
+//     // data.posts[req.params.id]
+//     // res.send(req.params.id)
+// })
 
 
 
