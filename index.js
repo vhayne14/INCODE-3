@@ -24,6 +24,11 @@ app.get('/users',(req,res)=>{
     res.json(data.users)
 })
 
+// GET request for schedules
+app.get('/schedules',(req,res)=>{
+    res.json(data.schedules)
+
+})
 
 // GET a single user
 app.get('/users/:id',(req,res)=>{
@@ -43,6 +48,8 @@ app.get('/users/:id',(req,res)=>{
         // }
 
 })
+
+
 
 // Get user and schedule
 
@@ -86,16 +93,15 @@ app.post('/users', (req, res) => {
 
 // Add new schedule
 app.post('/schedules', (req, res) => {
-    const {firstname, lastname, email, password} = req.body 
-    console.log(hash);
+    const {user_id, day, start_at, end_at} = req.body 
+   
 
     const newSched = {
         user_id, day, start_at, end_at
     }
-    data.users.push(newSched);
+    data.schedules.push(newSched);
     res.json(newSched);
-    // res.json(req.body);
-    // res.json(data.users);
+
 })
 
 
