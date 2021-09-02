@@ -2,6 +2,7 @@ const express = require('express')
 const data = require('./data')
 const app = express()
 const PORT = process.env.PORT || 3000
+const bcrypt = require('bcryptjs');
 const msg = "Hello World Branch 3b"
 // console.log(data.users)
 
@@ -41,6 +42,35 @@ app.get('/schedules',(req,res)=>{
     })
 
 })
+// GET a new user  ---> This needs to be on top of GET req single user to prevent misbehavior
+
+app.get('/users/new', (req,res)=>{
+    res.render('pages/newUser')
+})
+
+// POST a new user
+
+app.post('/users/new', (req, res) => {
+    // console.log(req.body)
+    const {firstname, lastname, email, password} = req.body
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+    // console.log(hash);
+
+    const newUser = {
+        firstname, lastname, email, password: hash
+    }
+    data.users.push(newUser)
+    // res.json(newUser)
+    res.redirect("/users");
+   
+
+
+
+
+  })
+
+
 
 // GET a single user
 app.get('/users/:id',(req,res) => {
@@ -74,7 +104,7 @@ app.get('/users/:id',(req,res) => {
 app.get('/users/:id/schedules',(req,res)=>{
 
 
-    const getSched = data.schedules.filter(sched => sched.id===Number(req.params.id));
+    const getSched = data.schedules.filter(sched => sched.user_id===Number(req.params.id));
     
 
     res.render("pages/schedules.ejs", {
@@ -82,8 +112,6 @@ app.get('/users/:id/schedules',(req,res)=>{
     })
 
 })
-
-//
 
 
 
