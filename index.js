@@ -36,8 +36,6 @@ app.get('/users',(req, res) =>{
 })
 
 
-
-
 // GET all schedules
 app.get('/schedules',(req,res)=>{
    
