@@ -17,9 +17,49 @@
             <% schedules.forEach(sched => { %>
                 <p>
                <strong>UserID</strong>
-                    <%= sched.user_id %> <br>
+                    <a href=" http://localhost:3000/users/<%= sched.user_id %>/schedules"><%= sched.user_id %></a><br>
+                
+                <strong>Username: </strong>
+                <%= sched.username %> <br>
                 <strong>Day: </strong>
-                    <%= sched.day %> <br>
+
+                    <% let day %>
+                    <% if(sched.day == 1) {%>
+                         <%  day = 'Monday'; %>
+                    <% } %>
+
+                    <% if(sched.day == 2) {%>
+                        <%  day = 'Tuesday'; %>
+                    <% } %>
+
+                    <% if(sched.day == 3) {%>
+                        <%  day = 'Wednesday'; %>
+                    <% } %>
+
+                    <% if(sched.day == 4) {%>
+                        <%  day = 'Thursday'; %>
+                    <% } %>
+
+                    <% if(sched.day == 5) {%>
+                        <%  day = 'Friday'; %>
+                    <% } %>
+
+                    <% if(sched.day == 6) {%>
+                        <%  day = 'Saturday'; %>
+                    <% } %>
+
+                    <% if(sched.day == 7) {%>
+                        <%  day = 'Sunday'; %>
+                    <% } %>
+
+                    <%= day %>
+                   
+                    <br>  
+
+
+
+
+
                 <strong>Start: </strong>
                     <%= sched.start_at %> <br>
                 <strong>End: </strong>
