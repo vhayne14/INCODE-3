@@ -4,74 +4,104 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include('../partials/materialize') %>
+    
+    
+    <title>Schedules</title>
+    
 </head>
 <body>
     
     <main>
-        <h1 style="color: red">List of Schedules!</h1>
-
+        
         <%- include('../partials/header') %>
 
-       
-            <% schedules.forEach(sched => { %>
-                <p>
-               <strong>UserID</strong>
-                    <a href=" http://localhost:3000/users/<%= sched.user_id %>/schedules"><%= sched.user_id %></a><br>
-                
-                <strong>Username: </strong>
-                <%= sched.username %> <br>
-                <strong>Day: </strong>
 
-                    <% let day %>
-                    <% if(sched.day == 1) {%>
-                         <%  day = 'Monday'; %>
-                    <% } %>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title center">Schedules</span>
+                            <div class="row">
+                               <table class = "highlight striped responsive-table">
+                                    <thead>
+                                        <tr>
+                                            <th>UserID</th>
+                                            <th>Username</th>
+                                            <th>Day</th>
+                                            <th>Start</th>
+                                            <th>End</th>
 
-                    <% if(sched.day == 2) {%>
-                        <%  day = 'Tuesday'; %>
-                    <% } %>
+                                        </tr>
+                                    
+                                    </thead>
+                                    <tbody>
 
-                    <% if(sched.day == 3) {%>
-                        <%  day = 'Wednesday'; %>
-                    <% } %>
+                                    
+                                        <% schedules.forEach(sched => { %>
+                                            <tr>
+                                                <td>
+                                                    <a href=" http://localhost:3000/users/<%= sched.user_id %>/schedules"><%= sched.user_id %></a>
+                                                </td>
+                                                <td>
+                                                    <%= sched.username %>
+                                                </td>
+                                        
+                                                <% let day %>
+                                                <% if(sched.day == 1) {%>
+                                                    <%  day = 'Monday'; %>
+                                                <% } %>
 
-                    <% if(sched.day == 4) {%>
-                        <%  day = 'Thursday'; %>
-                    <% } %>
+                                                <% if(sched.day == 2) {%>
+                                                    <%  day = 'Tuesday'; %>
+                                                <% } %>
 
-                    <% if(sched.day == 5) {%>
-                        <%  day = 'Friday'; %>
-                    <% } %>
+                                                <% if(sched.day == 3) {%>
+                                                    <%  day = 'Wednesday'; %>
+                                                <% } %>
 
-                    <% if(sched.day == 6) {%>
-                        <%  day = 'Saturday'; %>
-                    <% } %>
+                                                <% if(sched.day == 4) {%>
+                                                    <%  day = 'Thursday'; %>
+                                                <% } %>
 
-                    <% if(sched.day == 7) {%>
-                        <%  day = 'Sunday'; %>
-                    <% } %>
+                                                <% if(sched.day == 5) {%>
+                                                    <%  day = 'Friday'; %>
+                                                <% } %>
 
-                    <%= day %>
-                   
-                    <br>  
+                                                <% if(sched.day == 6) {%>
+                                                    <%  day = 'Saturday'; %>
+                                                <% } %>
 
+                                                <% if(sched.day == 7) {%>
+                                                    <%  day = 'Sunday'; %>
+                                                <% } %>
 
+                                                <td><%= day %></td>
+                                                <td><%= sched.start_at %> </td>
+                                                <td><%= sched.end_at %> <br></td>
+                                        
+                                            </tr>
+                                        <% }) %>
 
+                                    </tbody>
 
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                <strong>Start: </strong>
-                    <%= sched.start_at %> <br>
-                <strong>End: </strong>
-                    <%= sched.end_at %> <br>
-                </p>
+        
 
-                
-            <% }) %>
-
+   
 
 
     </main>
 
+  <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

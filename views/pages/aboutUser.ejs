@@ -4,21 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/materialize') %>
     <title>Document</title>
 </head>
 <body>
     <main>
         <%- include('../partials/header') %>
-        
-        <% getUser.forEach(user => { %>
-            <p>
-                <strong>Firstname: </strong> <%= user.firstname %> <br>
-                <strong>Lastname:</strong>  <%= user.lastname %> <br>
-                <strong>Email: </strong><%= user.email %> <br>
-                <strong>Hashed Password: </strong><%= user.password %> <br>
-            </p>
-            
-        <% }) %>
+  
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title center">About User</span>
+                            <div class="row">
+                                <table class = "highlight striped responsive-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                            <th>Password(Hashed)</th>
+                                           
+                                        </tr>
+                                    
+                                    </thead>
+                                    <tbody>
+                                        <% getUser.forEach(user => { %>
+                                        <tr>
+                                            <td>
+                                                <%= user.firstname %>
+                                            </td>
+                                            <td>
+                                                <%= user.lastname %>
+                                            </td>
+                                            <td>
+                                                <%= user.email %>
+                                            </td>
+                                            <td>
+                                                <%= user.password %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 
     </main>
 </body>

@@ -4,25 +4,91 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include('../partials/materialize') %>
+    <title>Schedules</title>
 </head>
 <body>
-        <!-- missing header-->
+       
         <main>
-            <h1 style="color: red">Schedules</h1>
-
             <%- include('../partials/header') %>
-
             
-            <% for (let i = 0; i < getSched.length; i++) { %>
-                <p>
-                    <strong>User ID: </strong><%= getSched[i].user_id %><br>
-                    <strong>Day: </strong><%= getSched[i].day %><br>
-                    <strong>Start: </strong><%= getSched[i].start_at %><br>
-                    <strong>End: </strong><%= getSched[i].end_at %><br>
-                </p>
-            
-            <% } %>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title center">New User</span>
+                                <div class="row">
+                                    <table class = "highlight striped responsive-table">
+                                        <thead>
+                                            <tr>
+                                                <th>UserID</th>
+                                                <th>Username</th>
+                                                <th>Day</th>
+                                                <th>Start</th>
+                                                <th>End</th>
+    
+                                            </tr>
+                                        
+                                        </thead>
+                                        <tbody>
+    
+                                    
+                                            <% getSched.forEach(sched => { %>
+                                                <tr>
+                                                    <td>
+                                                        <a href=" http://localhost:3000/users/<%= sched.user_id %>/schedules"><%= sched.user_id %></a>
+                                                    </td>
+                                                    <td>
+                                                        <%= sched.username %>
+                                                    </td>
+                                            
+                                                    <% let day %>
+                                                    <% if(sched.day == 1) {%>
+                                                        <%  day = 'Monday'; %>
+                                                    <% } %>
+    
+                                                    <% if(sched.day == 2) {%>
+                                                        <%  day = 'Tuesday'; %>
+                                                    <% } %>
+    
+                                                    <% if(sched.day == 3) {%>
+                                                        <%  day = 'Wednesday'; %>
+                                                    <% } %>
+    
+                                                    <% if(sched.day == 4) {%>
+                                                        <%  day = 'Thursday'; %>
+                                                    <% } %>
+    
+                                                    <% if(sched.day == 5) {%>
+                                                        <%  day = 'Friday'; %>
+                                                    <% } %>
+    
+                                                    <% if(sched.day == 6) {%>
+                                                        <%  day = 'Saturday'; %>
+                                                    <% } %>
+    
+                                                    <% if(sched.day == 7) {%>
+                                                        <%  day = 'Sunday'; %>
+                                                    <% } %>
+    
+                                                    <td><%= day %></td>
+                                                    <td><%= sched.start_at %> </td>
+                                                    <td><%= sched.end_at %> <br></td>
+                                            
+                                                </tr>
+                                            <% }) %>
+    
+                                        </tbody>
+    
+                                    </table> 
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </main>
         <!-- missing footer-->
