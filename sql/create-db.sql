@@ -1,0 +1,4 @@
+DROP DATABASE IF EXISTS users;
+
+
+CREATE DATABASE users;
